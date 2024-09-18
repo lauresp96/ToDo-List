@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task List</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<!-- Include header fragment -->
+<div th:replace="/fragments/header :: header (title='Task List')"></div>
+
+<div class="container page-content">
+    <h2>All Tasks</h2>
+    <a href="/create" class="btn btn-primary mb-3">Create New Task</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Task</th>
+            <th scope="col">Completed</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.id}">1</td>
+            <td th:text="${task.taskDescription}">Task Name</td>
+            <td th:text="${task.completed ? 'Yes' : 'No'}">Yes/No</td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${task.id})}" class="btn btn-warning btn-sm">Edit</a>
+                <a th:href="@{/delete/{id}(id=${task.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Include footer fragment -->
+<div th:replace="/fragments/footer :: footer"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

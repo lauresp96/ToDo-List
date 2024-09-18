@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Task</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<!-- Include header fragment -->
+<div th:replace="/fragments/header :: header (title='Edit Task')"></div>
+
+<div class="container page-content">
+    <form th:action="@{/edit/{id}(id=${task.id})}" th:object="${task}" method="post">
+        <div class="form-group">
+            <label for="taskDescription">Task Description</label>
+            <input type="text" id="taskDescription" th:field="*{taskDescription}"
+                   class="form-control" placeholder="Enter task description" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="completed">Completed</label>
+            <select id="completed" th:field="*{completed}" class="form-control">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+        <input type="hidden" th:field="*{id}"/>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+<!-- Include footer fragment -->
+<div th:replace="/fragments/footer :: footer"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
