@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Task List</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <!-- Include header fragment -->
-<div th:replace="/fragments/header :: header (title='Task List')"></div>
+<div th:replace="/fragments/header :: header (title='Task List - Organize to find a Job')"></div>
 
 <div class="container page-content">
     <h2>All Tasks</h2>
@@ -36,8 +36,6 @@
     </table>
 </div>
 
-<!-- Include footer fragment -->
-<div th:replace="/fragments/footer :: footer"></div>
 
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
