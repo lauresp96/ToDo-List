@@ -47,7 +47,7 @@ public class TaskWebController {
 
     @PostMapping("/edit/{id}")
     public String updateTask(@PathVariable("id") Long id, @ModelAttribute Task task) {
-        task.setId(id); // Ensure the ID is set correctly
+        task.setId(id); // Asegurar que el ID esté correctamente asignado
         taskService.updateTask(task);
         return "redirect:/tasks";
     }
